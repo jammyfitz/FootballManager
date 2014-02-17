@@ -137,6 +137,7 @@ namespace FootballManager
 
         private void InitializeBindings()
         {
+            string test = "another change";
             cb_Team.ItemsSource = Teams;
             cb_Player.ItemsSource = Players;
             dg_PlayerMatch.ItemsSource = FootballHelper.GetPlayerMatches(footballDataSet, defaultMatchId);
