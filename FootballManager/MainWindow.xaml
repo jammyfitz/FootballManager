@@ -1,0 +1,45 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:FootballManager" x:Name="wn_MainWindow"
+        x:Class="FootballManager.MainWindow"
+        Title="Football Manager v1.5" Height="366.4" Width="421.8" ResizeMode="NoResize" Icon="moleinthebarn.ico" >
+    <Window.Resources>
+        <local:FootballDataSet x:Key="footballDataSet"/>
+        <Style TargetType="{x:Type DataGridCell}">
+            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="DataGridCell_PreviewMouseLeftButtonDown"></EventSetter>
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="0,0,0,-0.6" Height="339" VerticalAlignment="Top" HorizontalAlignment="Left" Width="416" >
+        <Grid.OpacityMask>
+            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.HighlightColorKey}}" Opacity="0.8"/>
+        </Grid.OpacityMask>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0" SpreadMethod="Repeat">
+                <GradientStop Color="White"/>
+                <GradientStop Color="Blue" Offset="1"/>
+                <GradientStop Color="#DAA2A2FC" Offset="0.658"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="0"/>
+        </Grid.ColumnDefinitions>
+        <Label x:Name="lbl_Matches" Content="Matches" HorizontalAlignment="Left" Height="19" Margin="7,9,0,0" VerticalAlignment="Top" Width="79" FontFamily="Aharoni"/>
+        <ListBox x:Name="lb_Matches" HorizontalAlignment="Left" Height="242" Margin="10,28,0,0" VerticalAlignment="Top" Width="91" SelectionChanged="lb_Matches_SelectionChanged" DisplayMemberPath="MatchDate"/>
+        <Label x:Name="lbl_Selection" Content="Selection" HorizontalAlignment="Left" Height="20" Margin="117,8,0,0" VerticalAlignment="Top" Width="79" FontFamily="Aharoni"/>
+
+
+        <DataGrid AutoGenerateColumns="False" Height="242" HorizontalAlignment="Left" x:Name="dg_PlayerMatch" VerticalAlignment="Top" Width="180" Margin="117,28,0,0" GridLinesVisibility="None" CanUserAddRows="False" CanUserReorderColumns="False" CanUserSortColumns="False" CanUserResizeRows="False" CanUserResizeColumns="False" >
+            <DataGrid.Columns>
+                <DataGridComboBoxColumn x:Name="cb_Player" Header="Player" SelectedItemBinding="{Binding PlayerName}" Width="90" />
+                <DataGridComboBoxColumn x:Name="cb_Team" Header="Team" SelectedItemBinding="{Binding TeamName}" Width="75" SortMemberPath="TeamName" SortDirection="Descending"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Button x:Name="btn_Update" Content="Update" HorizontalAlignment="Left" Height="20" Margin="313,30,0,0" Width="68" Click="btn_Update_Click" FontFamily="Aharoni" VerticalAlignment="Top" FontSize="11" RenderTransformOrigin="0.5,0.64" />
+        <Label x:Name="lb_MatchWinner" Content="Winner" HorizontalAlignment="Left" Height="24" Margin="117,278,0,0" VerticalAlignment="Top" Width="61" FontFamily="Aharoni" RenderTransformOrigin="0.498,0.83"/>
+        <ComboBox x:Name="cb_MatchWinner" HorizontalAlignment="Left" Height="27" Margin="177,275,0,0" VerticalAlignment="Top" Width="120" />
+        <Button x:Name="btn_SendEmail" Content="Send Email" HorizontalAlignment="Left" Height="20" Margin="313,60,0,0" VerticalAlignment="Top" Width="81" Click="btn_SendEmail_Click" FontFamily="Aharoni" FontSize="11"/>
+    </Grid>
+</Window>
