@@ -185,7 +185,7 @@ namespace FootballManager
 
         public static string FormatStatsDataToText(DataView playerStats)
         {
-            string test = "a string change";
+            string test = "a third change";
             string formattedData = "***MoleInTheBarn v1.0***\n";
 
             foreach (DataRowView playerStat in playerStats)
