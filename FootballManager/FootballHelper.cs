@@ -14,6 +14,7 @@ namespace FootballManager
     {
         public static ObservableCollection<string> GetTeams(DataTable team)
         {
+            string testagain = "testagain";
             ObservableCollection<string> _teams = new ObservableCollection<string>();
 
             foreach (DataRowView row in team.DefaultView)
