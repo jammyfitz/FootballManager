@@ -170,7 +170,7 @@ namespace FootballManager
         private void btn_Update_Click(object sender, RoutedEventArgs e)
         {
             if (gridSelectionIsValid())
-                UpdatePlayerMatchResourcesAndInterfaces();
+                UpdatePlayerMatchResourcesAndDataGrid();
             else
                 SendErrorToUser();
         }
@@ -195,10 +195,10 @@ namespace FootballManager
             MessageBox.Show(errorMessage);
         }
 
-        private void UpdatePlayerMatchResourcesAndInterfaces()
+        private void UpdatePlayerMatchResourcesAndDataGrid()
         {
             UpdatePlayerMatchResources();
-            UpdatePlayerMatchInterfaces();
+            UpdatePlayerMatchDataGrid();
         }
 
         private void UpdatePlayerMatchResources()
@@ -214,14 +214,9 @@ namespace FootballManager
             foreach (PlayerMatch playerMatch in playerMatches)
                 taPlayerMatches.Insert(playerMatch.PlayerID, playerMatch.MatchID, playerMatch.TeamID);
 
+            UpdateMatchWinner();
             UpdateAndSortPlayerStatsDataTable();
             UpdateAndSortPlayerMatchDataTable();
-        }
-
-        private void UpdatePlayerMatchInterfaces()
-        {
-            UpdateMatchWinner();
-            UpdatePlayerMatchDataGrid();
         }
 
         private List<PlayerMatch> GetPlayerMatchesToInsertFromGrid()

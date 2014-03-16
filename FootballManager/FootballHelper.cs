@@ -14,7 +14,6 @@ namespace FootballManager
     {
         public static ObservableCollection<string> GetTeams(DataTable team)
         {
-            string testagain = "testagain";
             ObservableCollection<string> _teams = new ObservableCollection<string>();
 
             foreach (DataRowView row in team.DefaultView)
@@ -174,14 +173,6 @@ namespace FootballManager
                 return -1;
 
             return match.MatchWinner;
-        }
-
-        public static DataTable SortDataTable(DataTable unsortedTable, string columnName, string direction)
-        {
-            DataTable sortedTable = null;
-            unsortedTable.DefaultView.Sort = columnName + " " + direction;
-            sortedTable = unsortedTable.DefaultView.ToTable();
-            return sortedTable;
         }
 
         public static string FormatStatsDataToText(DataView playerStats)
